@@ -1,6 +1,1 @@
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-
-
-cd /home/asmafrid/inception
-docker-compose -f srcs/docker-compose.yml down -v
+scp -P 2222 ~/Downloads/inception_fixed.zip asmafrid@127.0.0.1:/tmp/
