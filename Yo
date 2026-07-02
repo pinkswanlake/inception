@@ -1,4 +1,1 @@
-cd /home/asmafrid/inception
-docker-compose -f srcs/docker-compose.yml down -v
-docker rmi srcs_wordpress srcs_nginx srcs_mariadb 2>/dev/null
-make
+sleep 40 && curl -k https://asmafrid.42.fr | grep -i title
