@@ -1,1 +1,4 @@
-scp -P 2222 ~/Downloads/inception_fixed.zip asmafrid@127.0.0.1:/tmp/
+cd /home/asmafrid/inception
+docker-compose -f srcs/docker-compose.yml down -v
+docker rmi srcs_wordpress srcs_nginx srcs_mariadb 2>/dev/null
+make
