@@ -1,4 +1,4 @@
-scp -P 2222 ~/Downloads/inception_final.zip asmafrid@127.0.0.1:/tmp/     2,   cd /tmp
+asmafrid@asmafrid:~/inception$  cd /tmp
 
 unzip -o inception_final.zip
 
@@ -10,10 +10,39 @@ cp -r /tmp/inception_fixed/DEV_DOC.md /home/asmafrid/inception/
 
 cp /tmp/inception_fixed/srcs/.env /home/asmafrid/inception/srcs/.env
 
-cp /tmp/inception_fixed/srcs/docker-compose.yml /home/asmafrid/inception/srcs/docker-compose.yml    3,   cd /home/asmafrid/inception
+cp /tmp/inception_fixed/srcs/docker-compose.yml /home/asmafrid/inception/srcs/docker-compose.yml 
+-bash:  cd: command not found
+unzip:  cannot find or open inception_final.zip, inception_final.zip.zip or inception_final.zip.ZIP.
+cp: cannot stat '/tmp/inception_fixed/README.md': No such file or directory
+cp: cannot stat '/tmp/inception_fixed/USER_DOC.md': No such file or directory
+cp: cannot stat '/tmp/inception_fixed/DEV_DOC.md': No such file or directory
+asmafrid@asmafrid:~/inception$ cd /tmp
 
-docker-compose -f srcs/docker-compose.yml down -v
+unzip -o inception_final.zip
 
-docker rmi srcs_wordpress srcs_nginx srcs_mariadb
+cp -r /tmp/inception_fixed/README.md /home/asmafrid/inception/
 
-make    4,   sleep 40 && curl -k https://asmafrid.42.fr | grep -i title
+cp -r /tmp/inception_fixed/USER_DOC.md /home/asmafrid/inception/
+
+cp -r /tmp/inception_fixed/DEV_DOC.md /home/asmafrid/inception/
+
+cp /tmp/inception_fixed/srcs/.env /home/asmafrid/inception/srcs/.env
+
+cp /tmp/inception_fixed/srcs/docker-compose.yml /home/asmafrid/inception/srcs/docker-compose.yml  
+Archive:  inception_final.zip
+  inflating: inception_fixed/srcs/.env  
+  inflating: inception_fixed/srcs/requirements/wordpress/Dockerfile  
+  inflating: inception_fixed/srcs/requirements/wordpress/tools/init.sh  
+  inflating: inception_fixed/srcs/requirements/nginx/Dockerfile  
+  inflating: inception_fixed/srcs/requirements/nginx/conf/nginx.conf  
+  inflating: inception_fixed/srcs/requirements/nginx/tools/init.sh  
+  inflating: inception_fixed/srcs/requirements/mariadb/Dockerfile  
+  inflating: inception_fixed/srcs/requirements/mariadb/conf/my.cnf  
+  inflating: inception_fixed/srcs/requirements/mariadb/tools/init.sh  
+  inflating: inception_fixed/srcs/docker-compose.yml  
+  inflating: inception_fixed/Makefile  
+  inflating: inception_fixed/USER_DOC.md  
+  inflating: inception_fixed/DEV_DOC.md  
+  inflating: inception_fixed/README.md  
+cp: target ' ': No such file or directory
+asmafrid@asmafrid:/tmp$ 
