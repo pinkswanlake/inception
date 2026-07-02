@@ -1,48 +1,23 @@
-asmafrid@asmafrid:~/inception$  cd /tmp
-
-unzip -o inception_final.zip
-
-cp -r /tmp/inception_fixed/README.md /home/asmafrid/inception/
-
-cp -r /tmp/inception_fixed/USER_DOC.md /home/asmafrid/inception/
-
-cp -r /tmp/inception_fixed/DEV_DOC.md /home/asmafrid/inception/
-
-cp /tmp/inception_fixed/srcs/.env /home/asmafrid/inception/srcs/.env
-
-cp /tmp/inception_fixed/srcs/docker-compose.yml /home/asmafrid/inception/srcs/docker-compose.yml 
--bash:  cd: command not found
-unzip:  cannot find or open inception_final.zip, inception_final.zip.zip or inception_final.zip.ZIP.
-cp: cannot stat '/tmp/inception_fixed/README.md': No such file or directory
-cp: cannot stat '/tmp/inception_fixed/USER_DOC.md': No such file or directory
-cp: cannot stat '/tmp/inception_fixed/DEV_DOC.md': No such file or directory
-asmafrid@asmafrid:~/inception$ cd /tmp
-
-unzip -o inception_final.zip
-
-cp -r /tmp/inception_fixed/README.md /home/asmafrid/inception/
-
-cp -r /tmp/inception_fixed/USER_DOC.md /home/asmafrid/inception/
-
-cp -r /tmp/inception_fixed/DEV_DOC.md /home/asmafrid/inception/
-
-cp /tmp/inception_fixed/srcs/.env /home/asmafrid/inception/srcs/.env
-
-cp /tmp/inception_fixed/srcs/docker-compose.yml /home/asmafrid/inception/srcs/docker-compose.yml  
-Archive:  inception_final.zip
-  inflating: inception_fixed/srcs/.env  
-  inflating: inception_fixed/srcs/requirements/wordpress/Dockerfile  
-  inflating: inception_fixed/srcs/requirements/wordpress/tools/init.sh  
-  inflating: inception_fixed/srcs/requirements/nginx/Dockerfile  
-  inflating: inception_fixed/srcs/requirements/nginx/conf/nginx.conf  
-  inflating: inception_fixed/srcs/requirements/nginx/tools/init.sh  
-  inflating: inception_fixed/srcs/requirements/mariadb/Dockerfile  
-  inflating: inception_fixed/srcs/requirements/mariadb/conf/my.cnf  
-  inflating: inception_fixed/srcs/requirements/mariadb/tools/init.sh  
-  inflating: inception_fixed/srcs/docker-compose.yml  
-  inflating: inception_fixed/Makefile  
-  inflating: inception_fixed/USER_DOC.md  
-  inflating: inception_fixed/DEV_DOC.md  
-  inflating: inception_fixed/README.md  
-cp: target ' ': No such file or directory
-asmafrid@asmafrid:/tmp$ 
+asmafrid@asmafrid:~/inception$ sleep 40 && curl -k https://asmafrid.42.fr | grep -i title
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<title>Inception</title>
+<link rel="alternate" type="application/rss+xml" title="Inception &raquo; Feed" href="https://asmafrid.42.fr/?feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="Inception &raquo; Comments Feed" href="https://asmafrid.42.fr/?feed=comments-rss2" />
+<style id="wp-block-site-title-inline-css">
+.wp-block-site-title{box-sizing:border-box}.wp-block-site-title :where(a){color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+/*# sourceURL=https://asmafrid.42.fr/wp-includes/blocks/site-title/style.min.css */
+<style id="wp-block-post-title-inline-css">
+.wp-block-post-title{box-sizing:border-box;word-break:break-word}.wp-block-post-title :where(a){display:inline-block;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+/*# sourceURL=https://asmafrid.42.fr/wp-includes/blocks/post-title/style.min.css */
+:root :where(.wp-block-post-title a:where(:not(.wp-element-button))){text-decoration: none;}
+:root :where(.wp-block-post-title a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+:root :where(.wp-block-site-title){font-weight: 700;letter-spacing: -.5px;}
+:root :where(.wp-block-site-title a:where(:not(.wp-element-button))){text-decoration: none;}
+:root :where(.wp-block-site-title a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+<link rel="https://api.w.org/" href="https://asmafrid.42.fr/index.php?rest_route=/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://asmafrid.42.fr/xmlrpc.php?rsd" />
+			<p class="wp-block-site-title"><a href="https://asmafrid.42.fr" target="_self" rel="home" aria-current="page">Inception</a></p>
+			<h2 class="wp-block-post-title has-x-large-font-size"><a href="https://asmafrid.42.fr/?p=1" target="_self" >Hello world!</a></h2>
+				<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:100%"><h2 class="wp-block-site-title"><a href="https://asmafrid.42.fr" target="_self" rel="home" aria-current="page">Inception</a></h2>
+100 68380    0 68380    0     0   209k      0 --:--:-- --:--:-- --:--:--  209k
+asmafrid@asmafrid:~/inception$ 
