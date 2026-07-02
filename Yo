@@ -1,23 +1,83 @@
-asmafrid@asmafrid:~/inception$ sleep 40 && curl -k https://asmafrid.42.fr | grep -i title
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0<title>Inception</title>
-<link rel="alternate" type="application/rss+xml" title="Inception &raquo; Feed" href="https://asmafrid.42.fr/?feed=rss2" />
-<link rel="alternate" type="application/rss+xml" title="Inception &raquo; Comments Feed" href="https://asmafrid.42.fr/?feed=comments-rss2" />
-<style id="wp-block-site-title-inline-css">
-.wp-block-site-title{box-sizing:border-box}.wp-block-site-title :where(a){color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
-/*# sourceURL=https://asmafrid.42.fr/wp-includes/blocks/site-title/style.min.css */
-<style id="wp-block-post-title-inline-css">
-.wp-block-post-title{box-sizing:border-box;word-break:break-word}.wp-block-post-title :where(a){display:inline-block;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
-/*# sourceURL=https://asmafrid.42.fr/wp-includes/blocks/post-title/style.min.css */
-:root :where(.wp-block-post-title a:where(:not(.wp-element-button))){text-decoration: none;}
-:root :where(.wp-block-post-title a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
-:root :where(.wp-block-site-title){font-weight: 700;letter-spacing: -.5px;}
-:root :where(.wp-block-site-title a:where(:not(.wp-element-button))){text-decoration: none;}
-:root :where(.wp-block-site-title a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
-<link rel="https://api.w.org/" href="https://asmafrid.42.fr/index.php?rest_route=/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://asmafrid.42.fr/xmlrpc.php?rsd" />
-			<p class="wp-block-site-title"><a href="https://asmafrid.42.fr" target="_self" rel="home" aria-current="page">Inception</a></p>
-			<h2 class="wp-block-post-title has-x-large-font-size"><a href="https://asmafrid.42.fr/?p=1" target="_self" >Hello world!</a></h2>
-				<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:100%"><h2 class="wp-block-site-title"><a href="https://asmafrid.42.fr" target="_self" rel="home" aria-current="page">Inception</a></h2>
-100 68380    0 68380    0     0  47697      0 --:--:--  0:00:01 --:--:-- 47684
+asmafrid@asmafrid:~/inception$ make
+mkdir -p /home/asmafrid/data/mariadb
+mkdir -p /home/asmafrid/data/wordpress
+docker-compose -f srcs/docker-compose.yml up -d --build
+Creating network "srcs_inception" with driver "bridge"
+Creating volume "srcs_mariadb" with local driver
+Creating volume "srcs_wordpress" with local driver
+Building mariadb
+Sending build context to Docker daemon  5.632kB
+Step 1/7 : FROM debian:bullseye
+ ---> 0d5812c8c0e4
+Step 2/7 : RUN apt-get update && apt-get install -y     mariadb-server     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> bec0726850b6
+Step 3/7 : COPY conf/my.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+ ---> Using cache
+ ---> 6dfc8fc54674
+Step 4/7 : COPY tools/init.sh /init.sh
+ ---> Using cache
+ ---> 99523253db2e
+Step 5/7 : RUN chmod +x /init.sh
+ ---> Using cache
+ ---> 286a24c0498f
+Step 6/7 : EXPOSE 3306
+ ---> Using cache
+ ---> 8e988e4d9b33
+Step 7/7 : ENTRYPOINT ["/init.sh"]
+ ---> Using cache
+ ---> ae82c9e5edc4
+Successfully built ae82c9e5edc4
+Successfully tagged srcs_mariadb:latest
+Building wordpress
+Sending build context to Docker daemon   5.12kB
+Step 1/7 : FROM debian:bullseye
+ ---> 0d5812c8c0e4
+Step 2/7 : RUN apt-get update && apt-get install -y     php7.4     php7.4-fpm     php7.4-mysql     php7.4-curl     php7.4-gd     php7.4-mbstring     php7.4-xml     php7.4-xmlrpc     php7.4-zip     wget     curl     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 199f976733e8
+Step 3/7 : RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar     && chmod +x wp-cli.phar     && mv wp-cli.phar /usr/local/bin/wp
+ ---> Using cache
+ ---> 745102092c39
+Step 4/7 : COPY tools/init.sh /init.sh
+ ---> Using cache
+ ---> 5983f2287833
+Step 5/7 : RUN chmod +x /init.sh
+ ---> Using cache
+ ---> 2f380c91d145
+Step 6/7 : EXPOSE 9000
+ ---> Using cache
+ ---> 70cd8bf25481
+Step 7/7 : ENTRYPOINT ["/init.sh"]
+ ---> Using cache
+ ---> 0ab91e20edf6
+Successfully built 0ab91e20edf6
+Successfully tagged srcs_wordpress:latest
+Building nginx
+Sending build context to Docker daemon  5.632kB
+Step 1/7 : FROM debian:bullseye
+ ---> 0d5812c8c0e4
+Step 2/7 : RUN apt-get update && apt-get install -y     nginx     openssl     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 5c4affd6776f
+Step 3/7 : COPY conf/nginx.conf /etc/nginx/sites-available/default
+ ---> Using cache
+ ---> 779b9ce40e87
+Step 4/7 : COPY tools/init.sh /init.sh
+ ---> Using cache
+ ---> de5c1c1915d6
+Step 5/7 : RUN chmod +x /init.sh
+ ---> Using cache
+ ---> 060018723dd4
+Step 6/7 : EXPOSE 443
+ ---> Using cache
+ ---> b8a0aed0ade6
+Step 7/7 : ENTRYPOINT ["/init.sh"]
+ ---> Using cache
+ ---> d8f86841b69b
+Successfully built d8f86841b69b
+Successfully tagged srcs_nginx:latest
+Creating mariadb ... done
+Creating wordpress ... done
+Creating nginx     ... done
 asmafrid@asmafrid:~/inception$ 
